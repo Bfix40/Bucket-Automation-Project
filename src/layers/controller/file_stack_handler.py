@@ -8,13 +8,18 @@ stack = Stack()
 file_service = FileService()
 stack_service = StackService(stack)
 
+# * get files from the Path
+
+
 def get_files():
-    
+
     txt_files = file_service.get_only_txt_files()
     return txt_files
+# * add .txt files to a stack
+
 
 def add_files_to_stack():
-    
+
     txt_files = file_service.get_only_txt_files()
 
     for filename in txt_files:
@@ -24,6 +29,8 @@ def add_files_to_stack():
 
         file = file_service.create_file(name, size, path)
         stack_service.stack.push(file)
+
+# * function meant to sort .txt files according to weight
 
 
 def sort_stack():
@@ -49,4 +56,3 @@ def sort_stack():
                 os.rename(archivo, "HardFile/"+archivo)
 
     return stack_service.stack.items()
-    
